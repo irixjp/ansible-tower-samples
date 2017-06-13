@@ -3,7 +3,5 @@
   gather_facts: yes
   max_fail_percentage: 0
 
-  tasks:
-
-  - shell: uname -a
-  - shell: rpm -qa | sort
+  tasks
+    - setup:
