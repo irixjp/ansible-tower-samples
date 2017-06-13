@@ -28,4 +28,4 @@
 
     - assert:
         that:
-          - "'localhost' in cmd_result.stdout"
+          - "cmd_result.rc == 0"
