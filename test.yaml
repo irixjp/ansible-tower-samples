@@ -3,6 +3,9 @@
   gather_facts: yes
   max_fail_percentage: 0
 
+  vars:
+    target_host: 172.16.99.10
+
   tasks:
 
     - shell: rpm -qa |grep openssh-clients
@@ -14,6 +17,13 @@
 
 
     - shell: cat /etc/hosts
+      register: cmd_result
+
+    - assert:
+        that:
+          - "'localhost' in cmd_result.stdout"
+
+    - shell: ping -c 1 {{ target_host }}
       register: cmd_result
 
     - assert:
