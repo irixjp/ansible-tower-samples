@@ -1,0 +1,21 @@
+- name: scan all hosts
+  hosts: all
+  gather_facts: yes
+  max_fail_percentage: 0
+
+  tasks:
+
+    - shell: rpm -qa |grep openssh-clients
+      register: cmd_result
+
+    - assert:
+        that:
+          - "cmd_result.rc == 0"
+
+
+    - shell: cat /etc/hosts
+      register: cmd_result
+
+    - assert:
+        that:
+          - "'localhost' in cmd_result.stdout"
