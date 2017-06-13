@@ -1,0 +1,12 @@
+- name: exec shell command
+  hosts: all
+  gather_facts: yes
+  max_fail_percentage: 0
+
+  tasks:
+
+  - shell: cat /etc/redhat-release
+
+  - lineinfile:
+      path: /etc/hosts
+      line: 172.16.99.10 tower
