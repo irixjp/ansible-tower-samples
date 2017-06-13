@@ -10,3 +10,6 @@
   - lineinfile:
       path: /etc/hosts
       line: 172.16.99.10 tower
+
+  - shell: cat /etc/hosts
+
